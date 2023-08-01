@@ -1,10 +1,9 @@
-// import { Component } from 'react';
+import React from 'react';
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import styled from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
 
-export function ImageGallery(prop) {
-  const { images } = prop;
+const ImageGallery = ({ images }) => {
   return (
     <>
       <ul className={styled.ImageGallery}>
@@ -14,7 +13,8 @@ export function ImageGallery(prop) {
       </ul>
     </>
   );
-}
+};
+
 ImageGallery.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
@@ -22,3 +22,5 @@ ImageGallery.propTypes = {
     })
   ).isRequired,
 };
+
+export default ImageGallery;
