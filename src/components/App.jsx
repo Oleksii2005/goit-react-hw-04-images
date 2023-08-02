@@ -36,11 +36,11 @@ const App = () => {
     fetchItems();
   }, [fetchItems]);
 
+  const [maxPage, setMaxPage] = useState(1);
+
   useEffect(() => {
-    const maxPage = Math.ceil(totalHits / maxImages);
-    // Assuming you have the maxPage state defined, otherwise add it as a state
-    // const [maxPage, setMaxPage] = useState(1);
-    // setMaxPage(maxPage);
+    const newMaxPage = Math.ceil(totalHits / maxImages);
+    setMaxPage(newMaxPage);
   }, [totalHits]);
 
   const handleLoadMore = () => {
@@ -54,6 +54,9 @@ const App = () => {
   };
 
   const showLoadMoreButton = images.length < totalHits;
+  useEffect(() => {
+    fetchItems();
+  }, [fetchItems, showLoadMoreButton]);
 
   return (
     <div className={css.App}>
