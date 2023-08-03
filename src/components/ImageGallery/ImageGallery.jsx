@@ -3,7 +3,10 @@ import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import styled from './ImageGallery.module.css';
 import PropTypes from 'prop-types';
 
-const ImageGallery = ({ images }) => {
+export const ImageGallery = ({ images }) => {
+  if (!Array.isArray(images)) {
+    return <div>No images to display.</div>;
+  }
   return (
     <>
       <ul className={styled.ImageGallery}>
@@ -22,5 +25,3 @@ ImageGallery.propTypes = {
     })
   ).isRequired,
 };
-
-export default ImageGallery;
